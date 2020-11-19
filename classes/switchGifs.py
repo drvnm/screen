@@ -2,10 +2,11 @@ from tkinter import *
 import datetime
 
 class SwitchGifs:
-    def __init__(self,root, canvas, obj1, obj2, expression):
+    def __init__(self,root, canvas,bus, canid, byte, obj1, obj2, expression):
         self.obj1 = obj1
         self.obj2 = obj2
         self.root = root
+        print(datetime.datetime.now().hour)
         self.canvas = canvas
         self.expression = expression 
         canvas.itemconfigure(self.obj1.canvasImg, state='hidden')

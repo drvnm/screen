@@ -10,6 +10,7 @@ from classes.canReader import CanReader
 from classes.placeCanText import PlaceInfo
 import matplotlib.animation as animation
 from classes.switchGifs import SwitchGifs
+import can
 
 plt.rcParams['toolbar'] = 'None'
 root = Tk()

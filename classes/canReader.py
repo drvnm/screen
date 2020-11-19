@@ -11,7 +11,7 @@ class CanReader(Thread):
     def __init__(self, channel):
         super().__init__(daemon=True)
         try:
-            self._bus = can.interface.Bus(channel=channel)    
+        self._bus = can.interface.Bus(channel=channel)    
         except NotImplementedError:
             pass
         self._queues = {}
