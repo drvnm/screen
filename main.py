@@ -26,4 +26,3 @@ waterboiler = PlaceTxt(root,canvas,'Waterboiler',0.5,0.26,size=17)
 
 bus.start()
 root.mainloop()
- 
