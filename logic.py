@@ -9,6 +9,7 @@ import pandas as pd
 from classes.canReader import CanReader
 from classes.placeCanText import PlaceInfo
 import matplotlib.animation as animation
+from matplotlib.widgets import Button as GraphButton
 
 plt.rcParams['toolbar'] = 'None'
 root = Tk()
@@ -40,6 +41,14 @@ def graph(i):
     
     ax4.plot(x, ynew, linewidth=2)
     ax4.set_title('e3')
+    
+    axButton = plt.axes([0.465, 0.9, 0.1, 0.075])
+    bMainScreen = GraphButton(axButton, 'Main Screen')
+    bMainScreen.on_clicked(callback.mainScreen)
+
+
+def mainScreen():
+    plt.close()
 
 def Graph():
     global ax1,ax2,ax3,ax4
@@ -50,7 +59,8 @@ def Graph():
     ax3.set_facecolor('#AAAABB')
     ax4.set_facecolor('#AAAABB')
     ani = animation.FuncAnimation(fig,graph,interval=1000)
-    plt.get_current_fig_manager().window.state('zoomed')
+    mng = plt.get_current_fig_manager()
+    mng.full_screen_toggle()
     plt.show()
 
     # ani = FuncAnimation(plt.gcf(), graph, interval=1000)
@@ -74,5 +84,5 @@ canvas.pack(fill="both", expand=True)
 fig = Figure(figsize=(1,1))
 
 xpng = ImageTk.PhotoImage(Image.open('rsc/data.png'))
-graphButton = Button(canvas,image=xpng, anchor='center', command=Graph, borderwidth=0, bd=0, highlightthickness=0)
+graphButton = Button(canvas,image=xpng, command=Graph, borderwidth=0, bd=0, highlightthickness=0)
 graphButton.place(x=SCREENWIDTH - 191.5, y=0)

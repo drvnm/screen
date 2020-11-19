@@ -17,4 +17,3 @@ graph = PlaceGraph(root,canvas,fig,0.2,0.2,24)
 
 
 root.mainloop()
- 
