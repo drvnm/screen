@@ -9,7 +9,11 @@ import pandas as pd
 from classes.canReader import CanReader
 from classes.placeCanText import PlaceInfo
 import matplotlib.animation as animation
+
 from matplotlib.widgets import Button as GraphButton
+
+from classes.switchGifs import SwitchGifs
+
 
 plt.rcParams['toolbar'] = 'None'
 root = Tk()

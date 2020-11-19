@@ -4,7 +4,9 @@ from PIL import Image, ImageTk # NOQA
 
 class PlaceGif():
     def __init__(self, root, canvas, filename, x, y, **kwargs):
-        self.speed = 50
+        self.speed = kwargs.get("speed",50)
+     
+
         self.frameCount = Image.open("rsc/" + filename).n_frames
         if 'resize' in kwargs and 'amount' in kwargs:
             if kwargs['resize'] == 'min':
@@ -19,10 +21,14 @@ class PlaceGif():
         self.index = 0
         self.animateGif(canvas, root)    
 
-    def changeSpeed(self, speed):
+    def setSpeed(self, speed):
         self.speed = speed
 
+    def __del__(self):
+        print('object deleted')
+
     def animateGif(self, canvas, root):
+     
         frame = self.frames[self.index]
 
         self.index += 1
