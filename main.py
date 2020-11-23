@@ -10,7 +10,7 @@ moon = PlaceGif(root, canvas, 'e.gif',0.18,0.24,speed=200, resize='min',amount=6
 
 sunny = PlaceGif(root, canvas, 'sun.gif',0.18,0.24, resize='min',amount=3)
 
-test = SwitchGifs(root,canvas, bus, 0x1004001, 3, sunny,moon,expression1)
+test = SwitchGifs(root,canvas, sunny,moon,expression1)
 
 zonnenPanelenTekst = PlaceTxt(root,canvas,'Zonnenpanelen',0.218,0.365,size=17)
 

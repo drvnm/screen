@@ -47,12 +47,10 @@ def graph(i):
     ax4.plot(x, ynew, linewidth=2)
     ax4.set_title('e3')
     
-    axButton = plt.axes([0.465, 0.9, 0.1, 0.075])
-    bMainScreen = GraphButton(axButton, 'Main Screen')
-    bMainScreen.on_clicked(callback.mainScreen)
+    
 
 
-def mainScreen():
+def mainScreen(i):
     plt.close()
 
 def Graph():
@@ -66,6 +64,9 @@ def Graph():
     ani = animation.FuncAnimation(fig,graph,interval=1000)
     mng = plt.get_current_fig_manager()
     mng.full_screen_toggle()
+    axButton = plt.axes([0.465, 0.9, 0.1, 0.075])
+    bMainScreen = GraphButton(axButton, 'Main Screen')
+    bMainScreen.on_clicked(mainScreen)
     plt.show()
 
     # ani = FuncAnimation(plt.gcf(), graph, interval=1000)
