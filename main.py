@@ -22,7 +22,7 @@ WarmteKoudopslag = PlaceTxt(root,canvas,'Warmte-Koudopslag',0.24,0.688,size=17)
 
 waterboiler = PlaceTxt(root,canvas,'Waterboiler',0.5,0.26,size=17)
 #hier komen alle grafieken
-# graph = PlaceGraph(root,canvas,fig,0.2,0.2,24)
+graph = PlaceGraph(root,canvas,fig,0.2,0.2,24)
 
 bus.start()
 root.mainloop()
