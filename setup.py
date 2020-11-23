@@ -1,10 +1,13 @@
 import os
 
-pip = ['pillow', 'queuelib', 'threaded', 'PySimpleGUI', 'python-can']
+pip = ['pillow', 'queuelib', 'threaded', 'python-can', 'queue', 'tkinter']
 apt = ['python3-tk']
 
 for pack in pip:
-    os.system('pip install ' + pack)
-
+    try:
+        os.system('pip3 install ' + pack)
+    except:pass
 for pack in apt:
-    os.system('sudo apt-get install ' + pack)
+    try:
+        os.system('sudo apt-get install ' + pack)
+    except:pass

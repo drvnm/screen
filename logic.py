@@ -56,6 +56,7 @@ def mainScreen(i):
 def Graph():
     global ax1,ax2,ax3,ax4
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(nrows=2, ncols=2)
+    fig.tight_layout()
     fig.patch.set_facecolor('#4d577d')
     ax1.set_facecolor('#AAAABB')
     ax2.set_facecolor('#AAAABB')
@@ -87,7 +88,7 @@ root.attributes("-fullscreen", True)
 canvas = Canvas(root, height=1080, width=1920,
                 highlightthickness=0, background='#2E3347')
 canvas.pack(fill="both", expand=True)
-fig = Figure(figsize=(1,1))
+fig = Figure(figsize=(2,2))
 
 xpng = ImageTk.PhotoImage(Image.open('rsc/data.png'))
 graphButton = Button(canvas,image=xpng, command=Graph, borderwidth=0, bd=0, highlightthickness=0)
