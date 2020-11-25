@@ -8,12 +8,12 @@ import pandas as pd
 
 
 
-fig = Figure(figsize=(2,2))
+fig = Figure(figsize=(3,2))
 
 
 
 class PlaceGraph():
-    def __init__(self, root, c, x, y1, canid, byte):
+    def __init__(self, root, c, x, y1, canid, byte,**kwargs):
         
         self.plot1 = fig.add_subplot(111)
         self.plot1.patch.set_visible(False)
@@ -21,11 +21,18 @@ class PlaceGraph():
         fig.set_facecolor("#2E3347")
         self.plot1.set_facecolor("#2E3347")
         fig.tight_layout()
-       
+        self.plot1.tick_params(axis='x', colors='white')
+        self.plot1.tick_params(axis='y', colors='white')
         self.canvas = FigureCanvasTkAgg(fig, master=c)
         self.byte = byte
         self.canvas.get_tk_widget().place(x=root.winfo_screenwidth() *
                                      x, y=root.winfo_screenheight() * y1,anchor='center')
+        xtitle = kwargs.get('xtitle', '')
+        ytitle = kwargs.get('ytitle', '')
+        self.xtitle = xtitle
+        self.ytitle = ytitle
+        self.plot1.xaxis.label.set_color('white')
+        self.plot1.yaxis.label.set_color('white')
         
     def graph(self,i):
         data = pd.read_csv('dataFiles/data.csv')
@@ -36,6 +43,9 @@ class PlaceGraph():
         print('BYTE WAS:',self.byte)
         self.plot1.clear()
         print(yvals)
-        self.plot1.plot(xvals, yvals, color='black')
+        self.plot1.plot(xvals, yvals, color='white')
+        self.plot1.set_xlabel(self.xtitle)
+        self.plot1.set_ylabel(self.ytitle)
+        fig.tight_layout()
         self.canvas.draw()
        
