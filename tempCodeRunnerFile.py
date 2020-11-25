@@ -1,1 +1,2 @@
-HOUR
+
+moon = PlaceGif(root, canvas, 'e.
