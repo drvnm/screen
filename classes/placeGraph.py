@@ -9,28 +9,37 @@ import pandas as pd
 
 
 fig = Figure(figsize=(3,2))
+fig.set_facecolor("#2E3347")
+fig.set_tight_layout(True)
 
 
+fig2 = Figure(figsize=(3,2))
+fig2.set_facecolor("#2E3347")
+fig2.set_tight_layout(True)
 
+fig3 = Figure(figsize=(3,2))
+fig3.set_facecolor("#2E3347")
+fig3.set_tight_layout(True)
+
+
+fig4 = Figure(figsize=(3,2))
+fig4.set_facecolor("#2E3347")
+fig4.set_tight_layout(True)
 class PlaceGraph():
-    def __init__(self, root, c, x, y1, canid, byte,**kwargs):
-        
+    def __init__(self, root, c, fig, x, y1, canid, byte,**kwargs):
+        self.xtitle = kwargs.get('xtitle', '')
+        self.ytitle = kwargs.get('ytitle', '')
+        self.byte = byte
+       
         self.plot1 = fig.add_subplot(111)
-        self.plot1.patch.set_visible(False)
-        
-        fig.set_facecolor("#2E3347")
         self.plot1.set_facecolor("#2E3347")
-        fig.tight_layout()
         self.plot1.tick_params(axis='x', colors='white')
         self.plot1.tick_params(axis='y', colors='white')
+
+
         self.canvas = FigureCanvasTkAgg(fig, master=c)
-        self.byte = byte
         self.canvas.get_tk_widget().place(x=root.winfo_screenwidth() *
                                      x, y=root.winfo_screenheight() * y1,anchor='center')
-        xtitle = kwargs.get('xtitle', '')
-        ytitle = kwargs.get('ytitle', '')
-        self.xtitle = xtitle
-        self.ytitle = ytitle
         self.plot1.xaxis.label.set_color('white')
         self.plot1.yaxis.label.set_color('white')
         
@@ -46,6 +55,6 @@ class PlaceGraph():
         self.plot1.plot(xvals, yvals, color='white')
         self.plot1.set_xlabel(self.xtitle)
         self.plot1.set_ylabel(self.ytitle)
-        fig.tight_layout()
+       
         self.canvas.draw()
        
