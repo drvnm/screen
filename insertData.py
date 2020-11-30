@@ -3,12 +3,15 @@ import random
 import time
 fieldnames = ['ID', 'MSG', 'HOUR']
 ids = [0x1004000, 0x1004001, 0x4002]
-index = 1
+index = 0
 with open('dataFiles/data.csv', 'w') as w:
     writer = csv.DictWriter(w, fieldnames=fieldnames)
     writer.writeheader()
 
-for i in range(24):
+while True:
+
+    if index >= 24:
+        index = 0
     with open('dataFiles/data.csv', 'a') as i:
         writer = csv.DictWriter(i, fieldnames=fieldnames)
 
@@ -24,4 +27,4 @@ for i in range(24):
         index +=1
         print(id,msg,hour)
         writer.writerow(info)
-    time.sleep(1)
+    time.sleep(0.3)

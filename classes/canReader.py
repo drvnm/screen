@@ -1,7 +1,7 @@
 from threading import Thread
 import can
 try:
-    import SimpleQueue 
+    from queue import SimpleQueue
 except ImportError:
     from multiprocessing.queues import SimpleQueue
 
@@ -17,11 +17,13 @@ class CanReader(Thread):
         self._queues = {}
 
     def register(self, canid):
-        if canid not in self._queues:
-            self._queues[canid] = []
-        queue = SimpleQueue()
-        self._queues[canid].append(queue)        
-        return queue
+        try:
+            if canid not in self._queues:
+                self._queues[canid] = []
+            queue = SimpleQueue()
+            self._queues[canid].append(queue)        
+            return queue
+        except:pass
 
     def run(self):
         while True:
