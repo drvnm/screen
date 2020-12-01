@@ -46,32 +46,28 @@ class PlaceGraph():
         
         self.plot1.xaxis.label.set_color('white')
         self.plot1.yaxis.label.set_color('white')
-        # self.queue = bus.register(canid)
-        self.i = 0
-        self.month = 10
-        self.day = 10
+        self.queue = bus.register(canid)
+    
+        
     def graph(self, i):
         try:
            
             if len(self.yvals) >= 23:
                 self.yvals.pop(0)
                 self.xvals.pop(0)
-            if self.i == 23:
-                self.i = 0
-                self.day += 1
-            if self.day > 20:
-                self.month += 1
-            # msg = self.queue.get_nowait() # lees data
+            
+            msg = self.queue.get_nowait() # lees data
+            print('MSG : ' + str(msg.data[self.byte]))
             datetimeobject = datetime.datetime.now()
            
-            # self.yvals.append(msg.data[self.byte])
-            self.yvals.append(random.randint(0,255))
-            self.xvals.append(datetime.datetime(2020, self.month, self.day, self.i, 0))
-            self.i+=1
+            self.yvals.append(msg.data[self.byte])
+         
+            self.xvals.append(datetimeobject)
+         
             self.plot1.clear()
-          
+            print(self.yvals)
 
-            print(self.xvals)
+            
             date_format = mpl_dates.DateFormatter('%H')
             self.plot1.xaxis.set_major_formatter(date_format)
             self.plot1.plot_date(self.xvals, self.yvals, color='white',linestyle='solid')
