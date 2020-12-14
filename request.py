@@ -1,3 +1,9 @@
-string = r'fee dfefe fef'
+def fac(n):
+    if n == 1:
+        return 1
+    else:
+        return n * fac(n - 1)
 
-print(string[3:-3])
+print(fac(6))
+
+copy()

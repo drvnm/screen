@@ -11,3 +11,4 @@ for pack in apt:
     try:
         os.system('sudo apt-get install ' + pack)
     except:pass
+    
