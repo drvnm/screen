@@ -5,8 +5,6 @@ try:
 except ImportError:
     from multiprocessing.queues import SimpleQueue
 
-
-
 class CanReader(Thread):
     def __init__(self, channel):
         super().__init__(daemon=True)
@@ -26,6 +24,7 @@ class CanReader(Thread):
         except:pass
 
     def run(self):
+        # runt op een aparthe thread, update elk id met het CAN bericht
         while True:
             msg = self._bus.recv()
             for q in self._queues[msg.arbitration_id]:
