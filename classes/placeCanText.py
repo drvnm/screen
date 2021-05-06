@@ -3,7 +3,6 @@ from tkinter import *
 class PlaceInfo():
     def __init__(self, bus, root, textx, texty, canid, byte, **kwargs):  
         self.root = root  
-     
         # hier word voor 2 variable gekeken of ze zijn aangegeven
         # als dit niet het geval is word er een standaard waarde aan gegeven
         fill = kwargs.get('kleur', 'white')
